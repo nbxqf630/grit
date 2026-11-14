@@ -1,20 +1,824 @@
-<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>一般社団法人 家庭金融教育支援機構「GRIT」</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;color:#23313c}
-header{padding:18px 5%;border-bottom:1px solid #ddd}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:60px 5%;align-items:center}
-.hero img{width:100%;height:auto;border-radius:20px;display:block;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-@media(max-width:800px){.hero{grid-template-columns:1fr}}
-</style></head><body>
-<header><img src="grit-logo.svg" alt="GRIT" style="height:70px"></header>
-<section class="hero">
-<div>
-<h1>一般社団法人 家庭金融教育支援機構「GRIT」</h1>
-<h2>家庭から、日本の金融教育を変える。</h2>
-<p>※写真は無加工・オリジナル画像をそのまま掲載しています。</p>
-</div>
-<div><img src="profile.jpg" alt="代表 山口新司"></div>
-</section>
-</body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="金融教育を通じて、一人ひとりが自ら考え、選択し、未来を切り拓く力を育む活動を行っています。" />
+  <title>一般社団法人 家庭金融教育支援機構「GRIT」｜家庭から、日本の金融教育を変える</title>
+
+  <style>
+    :root {
+      --navy: #16324f;
+      --blue: #2f6f8f;
+      --light-blue: #eaf4f8;
+      --green: #4f8a72;
+      --gold: #c9a24d;
+      --text: #24313b;
+      --muted: #66727c;
+      --white: #ffffff;
+      --bg: #f7fafb;
+      --border: #dbe6ea;
+      --shadow: 0 14px 38px rgba(22, 50, 79, 0.12);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section--soft {
+      background: var(--bg);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--navy);
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    p + p {
+      margin-top: 1em;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button--primary {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(22, 50, 79, 0.2);
+    }
+
+    .button--secondary {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--border);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(219, 230, 234, 0.9);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: var(--white);
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(47, 111, 143, 0.25);
+    }
+
+    .logo small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 0 92px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(79, 138, 114, 0.18), transparent 34%),
+        radial-gradient(circle at 10% 10%, rgba(47, 111, 143, 0.16), transparent 30%),
+        linear-gradient(180deg, #f8fcfd 0%, #ffffff 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 54px solid rgba(201, 162, 77, 0.08);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--blue);
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::before {
+      content: "MISSION";
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--navy);
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .quote {
+      padding: 30px;
+      border-left: 5px solid var(--gold);
+      background: var(--light-blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--navy);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      height: 100%;
+      padding: 30px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 26px rgba(22, 50, 79, 0.07);
+    }
+
+    .card-number {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+      border-radius: 14px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .programs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .program {
+      padding: 34px;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .program-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .program ul {
+      margin-top: 18px;
+      padding-left: 1.2em;
+      color: var(--muted);
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 42px;
+      align-items: stretch;
+    }
+
+    .profile-photo {
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(47, 111, 143, 0.86), rgba(79, 138, 114, 0.82)),
+        #d9edf3;
+      color: var(--white);
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .profile-photo { padding: 0; overflow: hidden; background: #eaf4f8; }
+    .profile-image { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
+    .profile-content {
+      padding: 42px;
+      border-radius: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-name {
+      font-size: 1.7rem;
+      color: var(--navy);
+      font-weight: 900;
+      margin: 8px 0 18px;
+    }
+
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .credential {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .cta {
+      padding: 58px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      color: var(--white);
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 18px;
+      max-width: 760px;
+      margin: 46px auto 0;
+      text-align: left;
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      background: rgba(255, 255, 255, 0.98);
+      color: var(--text);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    footer {
+      padding: 36px 0;
+      background: #0f2437;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .profile {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .programs {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 84px;
+      }
+
+      .profile-photo { min-height: 0; }
+      .profile-image { height: auto; min-height: 0; object-fit: contain; }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero h1 { font-size: clamp(2rem, 8vw, 2.55rem); line-height: 1.48; }
+      .hero { padding-top: 56px; }
+      .logo { min-width: 0; }
+      .logo span { overflow-wrap: anywhere; }
+      .hero-copy { font-size: 1rem; }
+      .profile-image { width: 100%; }
+
+      .hero-card,
+      .profile-content,
+      .program,
+      .card {
+        padding: 24px;
+      }
+
+      .cta {
+        padding: 38px 22px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="トップへ">
+        <span class="logo-mark">G</span>
+        <span>
+          一般社団法人 家庭金融教育支援機構「GRIT」
+          <small>Family Financial Education Support Institute</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="メインナビゲーション">
+        <a href="#about">私たちについて</a>
+        <a href="#programs">活動内容</a>
+        <a href="#message">代表メッセージ</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Financial Education</span>
+          <h1>
+            家庭から、
+            <span>日本の金融教育を変える。</span>
+          </h1>
+
+          <p class="hero-copy">
+            私たちは、金融教育を通じて、一人ひとりが自ら考え、
+            選択し、未来を切り拓く力を育みます。
+            学校・家庭・地域をつなぎ、金融教育が当たり前になる社会を目指します。
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button--primary" href="#programs">活動内容を見る</a>
+            <a class="button button--secondary" href="#contact">講演・授業を相談する</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <strong>
+            GRITで育てる、<br />
+            未来を選ぶ力。
+          </strong>
+          <p>
+            お金を増やす方法だけではなく、情報を見極め、
+            家族や将来について主体的に選べる力を育てます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">About Us</span>
+          <h2>金融教育を、すべての家庭へ。</h2>
+          <p class="lead">
+            子どもにも、保護者にも、先生にも、地域にも。
+            お金について安心して学び、話し合える環境をつくります。
+          </p>
+        </div>
+
+        <div class="quote">
+          「知らなかったから困った」を減らし、<br />
+          「知っていたから選べた」を増やしたい。
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Values</span>
+          <h2>私たちが大切にすること</h2>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>教育を第一に</h3>
+            <p>
+              知識を一方的に伝えるのではなく、
+              自分で考え、判断する力を育てます。
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>中立である</h3>
+            <p>
+              特定の商品や企業に偏らず、
+              学ぶ人の利益を最優先にします。
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>実践につなげる</h3>
+            <p>
+              学んで終わりではなく、
+              家庭や学校、地域での行動につながる学びを届けます。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Programs</span>
+          <h2>活動内容</h2>
+          <p class="lead">
+            年齢や立場に合わせて、学校・家庭・地域で実践できる金融教育を提供します。
+          </p>
+        </div>
+
+        <div class="programs">
+          <article class="program">
+            <span class="program-tag">学校向け</span>
+            <h3>学校向け金融教育</h3>
+            <p>
+              小学校・中学校・高校での出前授業や、
+              キャリア教育、家庭科、総合的な学習との連携を行います。
+            </p>
+            <ul>
+              <li>お金の役割と家計管理</li>
+              <li>奨学金・ローン・クレジット</li>
+              <li>SNS時代の金融トラブル</li>
+              <li>働くこととライフプラン</li>
+            </ul>
+          </article>
+
+          <article class="program">
+            <span class="program-tag">保護者向け</span>
+            <h3>子育て家庭の金融教育</h3>
+            <p>
+              教育費や家計管理だけでなく、
+              家庭で子どもとお金について話す方法も一緒に考えます。
+            </p>
+            <ul>
+              <li>教育資金の考え方</li>
+              <li>家庭でできるお金の教育</li>
+              <li>奨学金や進学費用</li>
+              <li>将来に備える家計づくり</li>
+            </ul>
+          </article>
+
+          <article class="program">
+            <span class="program-tag">教員向け</span>
+            <h3>教員研修・教材支援</h3>
+            <p>
+              学校現場で無理なく実践できる金融教育の授業づくりを支援します。
+            </p>
+            <ul>
+              <li>授業案・教材の提供</li>
+              <li>金融教育の基礎研修</li>
+              <li>実生活につながる題材づくり</li>
+              <li>キャリア教育との接続</li>
+            </ul>
+          </article>
+
+          <article class="program">
+            <span class="program-tag">地域・企業向け</span>
+            <h3>地域・企業との連携</h3>
+            <p>
+              自治体、企業、金融機関、教育機関と協力し、
+              地域全体で金融教育を推進します。
+            </p>
+            <ul>
+              <li>親子向けワークショップ</li>
+              <li>地域イベント</li>
+              <li>企業向け金融リテラシー研修</li>
+              <li>共同事業・教材開発</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="message">
+      <div class="container">
+        <div class="profile">
+          <div class="profile-photo">
+<img src="profile.jpg" alt="代表 山口新司" loading="lazy" class="profile-image" />
+          </div>
+
+          <div class="profile-content">
+            <span class="eyebrow">Message</span>
+            <h2>教育と金融を、もっと近くに。</h2>
+
+            <p>
+              教育現場で子どもたちと向き合い、金融の現場で多くの家庭と向き合う中で、
+              私は何度も「もっと早く知っていれば」という言葉を耳にしてきました。
+            </p>
+
+            <p>
+              進学、就職、結婚、住宅購入、子育て、老後。
+              人生には、お金が関わる重要な選択が数多くあります。
+              しかし、その選択に必要な知識を学ぶ機会は、まだ十分とは言えません。
+            </p>
+
+            <p>
+              だからこそ、金融教育を特別なものではなく、
+              誰もが自然に学べる文化にしたい。
+              その一歩を、学校から、家庭から、地域から広げていきます。
+            </p>
+
+            <div class="profile-name">代表　山口 新司</div>
+
+            <div class="credentials">
+              <span class="credential">元・中学校教員</span>
+              <span class="credential">ライフプランナー経験</span>
+              <span class="credential">2級FP技能士</span>
+              <span class="credential">中学校・高校教諭免許</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta">
+          <span class="eyebrow" style="color: #d9c180;">Contact</span>
+          <h2>金融教育を、一緒に広げませんか。</h2>
+          <p>
+            学校での授業、保護者向け講座、教員研修、
+            地域イベント、企業・自治体との連携について、お気軽にご相談ください。
+          </p>
+
+          <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault();alert('お問い合わせフォームは準備中です。現在は送信できません。');">
+            <label>
+              お名前
+              <input type="text" name="name" placeholder="山田 太郎" required />
+            </label>
+
+            <label>
+              ご所属
+              <input type="text" name="organization" placeholder="学校名・団体名・会社名など" />
+            </label>
+
+            <label>
+              ご相談内容
+              <select name="category" required>
+                <option value="">選択してください</option>
+                <option>学校向け授業</option>
+                <option>保護者向け講座</option>
+                <option>教員研修</option>
+                <option>地域イベント</option>
+                <option>企業・自治体との連携</option>
+                <option>個別相談</option>
+                <option>その他</option>
+              </select>
+            </label>
+
+            <label>
+              メールアドレス
+              <input type="email" name="email" placeholder="example@example.com" required />
+            </label>
+
+            <label>
+              お問い合わせ内容
+              <textarea name="message" placeholder="ご希望の内容、対象者、時期などをご記入ください。" required></textarea>
+            </label>
+
+            <button class="button button--secondary" type="submit">
+              相談内容を送信する
+            </button>
+
+            <p class="form-note">
+              ※このフォームはデザイン用です。実際に送信するには、
+              Googleフォーム、Formspree、WordPressなどとの接続が必要です。
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">一般社団法人 家庭金融教育支援機構「GRIT」</div>
+        <small>家庭から、日本の金融教育を変える。</small>
+      </div>
+
+      <small>&copy; 2026 GRIT Family Financial Education. All Rights Reserved.</small>
+    </div>
+  </footer>
+</body>
+</html>
